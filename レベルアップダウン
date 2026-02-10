@@ -1,0 +1,22 @@
+let lastLevel = null;
+
+function handleTsunami(newLevel){
+
+  if(lastLevel !== newLevel){
+
+    let text = "";
+
+    if(lastLevel === null){
+      text = "新規発表";
+    }else{
+      text = `${lastLevel} → ${newLevel}`;
+    }
+
+    broadcast({
+      title: "津波情報更新",
+      body: text
+    });
+
+    lastLevel = newLevel;
+  }
+}
