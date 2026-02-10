@@ -1,0 +1,14 @@
+let lastReportNumber = 0;
+
+function handleEEW(reportNum){
+
+  if(reportNum > lastReportNumber){
+
+    broadcast({
+      title: `緊急地震速報 第${reportNum}報`,
+      body: "更新されました"
+    });
+
+    lastReportNumber = reportNum;
+  }
+}
