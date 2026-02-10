@@ -1,0 +1,19 @@
+setInterval(() => {
+
+  const sample = {
+    type: "tsunami",
+    level: "注意報"
+  };
+
+  broadcast(sample);
+
+}, 10000);
+
+function broadcast(data){
+  wss.clients.forEach(client => {
+    client.send(JSON.stringify({
+      title: "津波情報更新",
+      body: data.level
+    }));
+  });
+}
